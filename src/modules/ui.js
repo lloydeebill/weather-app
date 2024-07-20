@@ -25,7 +25,7 @@ class UIWeather {
         : weatherData.current.feelslike_f;
 
     const feelsLike = document.querySelector(".feels-like");
-    feelsLike.innerText = `Feels like: ${feelsLikeValue} ${feelsLikeUnit}`;
+    feelsLike.innerHTML = `Feels like: <span style="font-weight: bold;">${feelsLikeValue} ${feelsLikeUnit}</span>`;
 
     let windUnit = unit === "metric" ? "kph" : "mph";
     let windValue =
@@ -34,10 +34,10 @@ class UIWeather {
         : weatherData.current.wind_mph;
 
     const wind = document.querySelector(".wind");
-    wind.innerText = `Wind: ${windValue} ${windUnit}`;
+    wind.innerHTML = `Wind: <span style="font-weight: bold;">${windValue} ${windUnit}</span>`;
 
     const humidity = document.querySelector(".humidity");
-    humidity.innerText = `Humidity: ${weatherData.current.humidity}%`;
+    humidity.innerHTML = `Humidity: <span style="font-weight: bold;">${weatherData.current.humidity}% </span>`;
   }
   updateWeekWeather(weatherData, unit) {
     const weatherWeekInfo = document.querySelector(".weather-week-info");
@@ -46,7 +46,7 @@ class UIWeather {
     const forecastDays = weatherData.forecast.forecastday;
     const upcomingDays = forecastDays.slice(1, 8);
     upcomingDays.forEach((day) => {
-      const date = day.date;
+      const date = this.formatDate(day.date);
       const icon = day.day.condition.icon;
       const temp = unit === "metric" ? day.day.avgtemp_c : day.day.avgtemp_f;
 
@@ -59,7 +59,7 @@ class UIWeather {
     const weatherDayCard = document.createElement("div");
     weatherDayCard.classList.add("weather-day-card");
 
-    const weatherDate = document.createElement("h3");
+    const weatherDate = document.createElement("h4");
     weatherDate.innerText = date;
 
     const weatherIcon = document.createElement("img");
@@ -73,6 +73,11 @@ class UIWeather {
     weatherDayCard.appendChild(weatherTemp);
 
     return weatherDayCard;
+  }
+  formatDate(dateString) {
+    const options = { year: "numeric", month: "short", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", options);
   }
 }
 
