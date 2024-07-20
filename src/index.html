@@ -3,7 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather App</title>
+    <style>
+      /* Add your CSS styles here */
+    </style>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <div class="upper-content">
+        <div class="weather-info">
+          <h1>Today</h1>
+          <h2 class="weather-title"></h2>
+          <h4 class="weather-location"></h4>
+          <div class="weather-details">
+            <h1 class="weather-temp"></h1>
+            <div>
+              <p class="feels-like"></p>
+              <p class="wind"></p>
+              <p class="humidity"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-info">
+          <input class="search-input" placeholder="Search Location" />
+          <button class="search-button" type="button">Search</button>
+          <div class="convert-buttons">
+            <button class="fahr-button">°F</button>
+            <button class="cels-button">°C</button>
+          </div>
+        </div>
+
+        <div class="day-info"></div>
+      </div>
+
+      <div class="lower-content">
+        <div class="weather-multiple-info"></div>
+      </div>
+    </main>
+    <script>
+      // Add your JavaScript here
+    </script>
+  </body>
 </html>

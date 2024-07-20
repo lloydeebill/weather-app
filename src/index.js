@@ -1,13 +1,29 @@
 import "./style.css";
+import { Weather } from "./modules/weather";
 
-function component() {
-  const element = document.createElement("p");
+const weather = new Weather();
 
-  element.classList.add("hello");
+async function getWeatherData() {
+  try {
+    await weather.fetchWeather();
 
-  element.innerText = "hello world";
+    console.log(weather.weatherData);
 
-  return element;
+    weather.todayWeather("metric");
+  } catch (error) {
+    console.error("Failed to fetch weather data", error);
+  }
 }
 
-document.body.appendChild(component());
+const fahrButton = document.querySelector(".fahr-button");
+const celsButton = document.querySelector(".cels-button");
+
+fahrButton.addEventListener("click", () => {
+  weather.todayWeather("imperial");
+});
+
+celsButton.addEventListener("click", () => {
+  weather.todayWeather("metric");
+});
+
+getWeatherData();
