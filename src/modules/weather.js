@@ -3,10 +3,10 @@ class Weather {
     this.weatherData = null;
   }
 
-  async fetchWeather() {
+  async fetchWeather(location) {
     try {
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=5d1aa864e5a04bd48ed143546241807&q=$Butuan City`,
+        `http://api.weatherapi.com/v1/forecast.json?key=5d1aa864e5a04bd48ed143546241807&q=${location}`,
         {
           mode: "cors",
         },
@@ -46,7 +46,7 @@ class Weather {
     const feelsLike = document.querySelector(".feels-like");
     feelsLike.innerText = `Feels like: ${feelsLikeValue} ${feelsLikeUnit}`;
 
-    let windUnit = unit === "metric" ? "°C" : "°F";
+    let windUnit = unit === "metric" ? "kph" : "mph";
     let windValue =
       unit === "metric"
         ? this.weatherData.current.wind_kph

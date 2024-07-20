@@ -1,29 +1,7 @@
 import "./style.css";
-import { Weather } from "./modules/weather";
+import { getWeatherData, initEventListeners } from "./modules/events";
 
-const weather = new Weather();
-
-async function getWeatherData() {
-  try {
-    await weather.fetchWeather();
-
-    console.log(weather.weatherData);
-
-    weather.todayWeather("metric");
-  } catch (error) {
-    console.error("Failed to fetch weather data", error);
-  }
-}
-
-const fahrButton = document.querySelector(".fahr-button");
-const celsButton = document.querySelector(".cels-button");
-
-fahrButton.addEventListener("click", () => {
-  weather.todayWeather("imperial");
+document.addEventListener("DOMContentLoaded", () => {
+  initEventListeners();
+  getWeatherData("Butuan City");
 });
-
-celsButton.addEventListener("click", () => {
-  weather.todayWeather("metric");
-});
-
-getWeatherData();
