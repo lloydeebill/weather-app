@@ -183,19 +183,32 @@ main {
   opacity: 0.5;
 }
 
+/*lower-content*/
 
 .lower-content {
   height: 45%;
-  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
 
 }
 
+/*weather-week-info*/
+
 .weather-week-info {
   width: 90%;
   height: 80%;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.weather-day-card {
+  color: white;
+  font-size: 30px;
+
 }

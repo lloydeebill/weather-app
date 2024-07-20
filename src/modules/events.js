@@ -8,6 +8,7 @@ async function getWeatherData(location) {
   try {
     const weatherData = await weather.fetchWeather(location);
     uiWeather.updateTodayWeather(weatherData, "metric");
+    uiWeather.updateWeekWeather(weatherData, "metric");
   } catch (error) {
     console.error("Failed to fetch weather data", error);
   }
@@ -20,10 +21,12 @@ function initEventListeners() {
 
   fahrButton.addEventListener("click", () => {
     uiWeather.updateTodayWeather(weather.weatherData, "imperial");
+    uiWeather.updateWeekWeather(weather.weatherData, "imperial");
   });
 
   celsButton.addEventListener("click", () => {
     uiWeather.updateTodayWeather(weather.weatherData, "metric");
+    uiWeather.updateWeekWeather(weather.weatherData, "metric");
   });
 
   searchButton.addEventListener("click", async () => {

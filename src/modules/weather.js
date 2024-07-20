@@ -6,7 +6,7 @@ class Weather {
   async fetchWeather(location) {
     try {
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=5d1aa864e5a04bd48ed143546241807&q=${location}`,
+        `http://api.weatherapi.com/v1/forecast.json?key=5d1aa864e5a04bd48ed143546241807&q=${location}&days=8&aqi=no&alerts=no`,
         {
           mode: "cors",
         },
