@@ -6,6 +6,9 @@ class UIWeather {
     const weatherLocation = document.querySelector(".weather-location");
     weatherLocation.innerText = `${weatherData.location.name}`;
 
+    const weatherIcon = document.querySelector(".weather-icon");
+    weatherIcon.src = `${weatherData.current.condition.icon}`;
+
     let tempUnit = unit === "metric" ? "°C" : "°F";
     let tempValue =
       unit === "metric"
