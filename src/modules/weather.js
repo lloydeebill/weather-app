@@ -6,7 +6,7 @@ class Weather {
   async fetchWeather() {
     try {
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=5d1aa864e5a04bd48ed143546241807&q=$butuan`,
+        `http://api.weatherapi.com/v1/forecast.json?key=5d1aa864e5a04bd48ed143546241807&q=$Butuan City`,
         {
           mode: "cors",
         },
@@ -36,6 +36,27 @@ class Weather {
 
     const weatherTemp = document.querySelector(".weather-temp");
     weatherTemp.innerText = `${tempValue} ${tempUnit}`;
+
+    let feelsLikeUnit = unit === "metric" ? "°C" : "°F";
+    let feelsLikeValue =
+      unit === "metric"
+        ? this.weatherData.current.feelslike_c
+        : this.weatherData.current.feelslike_f;
+
+    const feelsLike = document.querySelector(".feels-like");
+    feelsLike.innerText = `Feels like: ${feelsLikeValue} ${feelsLikeUnit}`;
+
+    let windUnit = unit === "metric" ? "°C" : "°F";
+    let windValue =
+      unit === "metric"
+        ? this.weatherData.current.wind_kph
+        : this.weatherData.current.wind_mph;
+
+    const wind = document.querySelector(".wind");
+    wind.innerText = `Wind: ${windValue} ${windUnit}`;
+
+    const humidity = document.querySelector(".humidity");
+    humidity.innerText = `Humidity: ${this.weatherData.current.humidity}%`;
   }
 }
 
